@@ -1,69 +1,316 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio | HadzzOfficial</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hostinger Portfolio</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<!-- AOS -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0f172a;
+  --card:rgba(255,255,255,0.06);
+  --text:#ffffff;
+  --sub:#cbd5f5;
+  --accent:#7c3aed;
+}
+
+.light{
+  --bg:#f8fafc;
+  --card:#ffffff;
+  --text:#0f172a;
+  --sub:#475569;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  transition:0.4s;
+  overflow-x:hidden;
+}
+
+/* Navbar */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:18px 60px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  backdrop-filter:blur(12px);
+  background:rgba(0,0,0,0.4);
+  z-index:100;
+}
+
+nav h1{
+  color:var(--accent);
+}
+
+nav ul{
+  display:flex;
+  list-style:none;
+}
+
+nav ul li{
+  margin-left:25px;
+}
+
+nav ul li a{
+  text-decoration:none;
+  color:var(--text);
+  font-weight:500;
+}
+
+/* Toggle */
+.toggle{
+  cursor:pointer;
+  background:var(--accent);
+  padding:8px 14px;
+  border-radius:20px;
+  font-size:14px;
+  margin-left:20px;
+}
+
+/* Hero */
+.hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding:120px 60px;
+}
+
+.hero video{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:-2;
+}
+
+.overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(15,23,42,0.85);
+  z-index:-1;
+}
+
+.hero-text{
+  max-width:600px;
+}
+
+.hero-text h2{
+  font-size:48px;
+}
+
+.hero-text span{
+  color:var(--accent);
+}
+
+.hero-text p{
+  margin:20px 0;
+  color:var(--sub);
+}
+
+.hero-text button{
+  padding:14px 30px;
+  border:none;
+  background:var(--accent);
+  color:#fff;
+  border-radius:30px;
+  cursor:pointer;
+  box-shadow:0 0 25px var(--accent);
+}
+
+/* Section */
+section{
+  padding:100px 60px;
+}
+
+.title{
+  text-align:center;
+  margin-bottom:60px;
+}
+
+.title span{
+  color:var(--accent);
+}
+
+/* Cards */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+}
+
+.card{
+  background:var(--card);
+  padding:30px;
+  border-radius:20px;
+  backdrop-filter:blur(10px);
+  transition:0.4s;
+}
+
+.card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 0 30px var(--accent);
+}
+
+.card h3{
+  color:var(--accent);
+  margin-bottom:10px;
+}
+
+/* Portfolio */
+.project{
+  height:200px;
+  border-radius:20px;
+  background:linear-gradient(135deg,#7c3aed,#4f46e5);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:600;
+}
+
+/* Contact */
+.contact{
+  text-align:center;
+}
+
+.contact input,
+.contact textarea{
+  width:100%;
+  max-width:500px;
+  padding:15px;
+  margin:10px auto;
+  border:none;
+  border-radius:10px;
+}
+
+/* Footer */
+footer{
+  text-align:center;
+  padding:30px;
+  background:rgba(0,0,0,0.4);
+}
+
+@media(max-width:768px){
+  .hero h2{font-size:36px;}
+}
+</style>
 </head>
+
 <body>
 
-  <!-- Background Effect -->
-  <div class="bg"></div>
+<nav>
+  <h1>Hostinger</h1>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><div class="toggle" onclick="toggleMode()">🌙 / ☀️</div></li>
+  </ul>
+</nav>
 
-  <!-- Navbar -->
-  <nav>
-    <h2 class="logo">Hadzz<span>Official</span></h2>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-    </ul>
-  </nav>
+<section class="hero" id="home">
+  <!-- VIDEO BACKGROUND -->
+  <video autoplay muted loop>
+    <source src="https://cdn.coverr.co/videos/coverr-server-room-7613/1080p.mp4" type="video/mp4">
+  </video>
+  <div class="overlay"></div>
 
-  <!-- Hero -->
-  <section class="hero" id="home">
-    <h1>Halo, Saya <span>HadzzOfficial</span></h1>
-    <p>Web Developer • UI Designer • Tech Enthusiast</p>
-    <a href="#projects" class="btn">Lihat Project</a>
-  </section>
+  <div class="hero-text" data-aos="fade-right">
+    <h2>Powerful <span>Hosting</span> & Website</h2>
+    <p>Portfolio modern bertema Hostinger dengan animasi, video, dan performa tinggi.</p>
+    <button>Get Started</button>
+  </div>
+</section>
 
-  <!-- About -->
-  <section class="about" id="about">
-    <h2>Tentang Saya</h2>
-    <p>
-      Saya adalah seorang web developer yang fokus membuat website modern,
-      responsif, dan menarik menggunakan HTML, CSS, dan JavaScript.
-    </p>
-  </section>
+<section id="about">
+  <div class="title" data-aos="fade-up">
+    <h2>About <span>Me</span></h2>
+  </div>
+  <p style="text-align:center;max-width:800px;margin:auto;color:var(--sub);" data-aos="fade-up">
+    Saya web developer yang fokus pada hosting, website modern, dan UI futuristik.
+  </p>
+</section>
 
-  <!-- Skills -->
-  <section class="skills" id="skills">
-    <h2>Skill</h2>
-    <div class="skill-box">
-      <div>HTML</div>
-      <div>CSS</div>
-      <div>JavaScript</div>
-      <div>UI Design</div>
+<section id="services">
+  <div class="title" data-aos="fade-up">
+    <h2>My <span>Services</span></h2>
+  </div>
+  <div class="grid">
+    <div class="card" data-aos="zoom-in">
+      <h3>Web Hosting</h3>
+      <p>Server cepat dan stabil.</p>
     </div>
-  </section>
-
-  <!-- Projects -->
-  <section class="projects" id="projects">
-    <h2>Project</h2>
-    <div class="project-list">
-      <div class="card">Portfolio Website</div>
-      <div class="card">Landing Page</div>
-      <div class="card">Web Store</div>
+    <div class="card" data-aos="zoom-in" data-aos-delay="100">
+      <h3>Website Builder</h3>
+      <p>Landing page modern.</p>
     </div>
-  </section>
+    <div class="card" data-aos="zoom-in" data-aos-delay="200">
+      <h3>Domain & SSL</h3>
+      <p>Keamanan maksimal.</p>
+    </div>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2026 HadzzOfficial. All Rights Reserved.</p>
-  </footer>
+<section id="portfolio">
+  <div class="title" data-aos="fade-up">
+    <h2>My <span>Projects</span></h2>
+  </div>
+  <div class="grid">
+    <div class="project" data-aos="flip-left">Hosting Web</div>
+    <div class="project" data-aos="flip-left" data-aos-delay="100">Landing Page</div>
+    <div class="project" data-aos="flip-left" data-aos-delay="200">Server Panel</div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="title" data-aos="fade-up">
+    <h2>Contact <span>Me</span></h2>
+  </div>
+  <div class="contact" data-aos="fade-up">
+    <input placeholder="Nama">
+    <input placeholder="Email">
+    <textarea rows="4" placeholder="Pesan"></textarea>
+    <button>Send</button>
+  </div>
+</section>
+
+<footer>
+  © 2026 Hostinger Portfolio
+</footer>
+
+<!-- AOS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({
+  duration:1000,
+  once:true
+});
+
+function toggleMode(){
+  document.body.classList.toggle('light');
+}
+</script>
 
 </body>
-</html>
+  </html>
